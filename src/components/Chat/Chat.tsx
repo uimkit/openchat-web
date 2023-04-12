@@ -61,11 +61,7 @@ export function Chat({
     (async function() {
       const UIMClient = (await import('@uimkit/uim-js')).default;
 
-      const client = new UIMClient(accessToken, {
-        subscribeKey: process.env.NEXT_PUBLIC_SUBSCRIBE_KEY,
-        publishKey: process.env.NEXT_PUBLIC_PUBLISH_KEY,
-        secretKey: process.env.NEXT_PUBLIC_SECRET_KEY,
-      });
+      const client = new UIMClient(accessToken);
       setClient(client as unknown as APIClient);
     })();
   }, [accessToken]);

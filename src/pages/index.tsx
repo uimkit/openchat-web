@@ -15,7 +15,6 @@ IndexPage.layout = Layout;
 export const getServerSideProps = withPageAuthRequired({ 
   async getServerSideProps({ req, res }) {
     try {
-      console.log('accessToken: ',);
       const { accessToken } = await getAccessToken(req, res);
       return {
         props: { accessToken }

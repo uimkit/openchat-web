@@ -15,7 +15,7 @@ export const AccountSelect: React.FC<AccountSelectProps> = ({
   onSelect,
 }) => {
   return (
-    <Menu onSelect={onSelect}>
+    <Menu>
       <MenuButton as={Button}>
         <HStack spacing="12px">
           { activeAccount ? (

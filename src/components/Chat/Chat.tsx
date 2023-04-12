@@ -75,19 +75,19 @@ export function Chat({
 
 export type ChatContainerProps = {
   activeAccount?: IMAccount;
-  setActiveAccount: (account: IMAccount) => void;
+  setActiveAccount: (account?: IMAccount) => void;
 }
 
 export const ChatContainer: React.FC<ChatContainerProps> = ({
   activeAccount,
   setActiveAccount,
 }) => {
-  const { client, activeConversation, setActiveConversation } = useUIKit();
+  const { client, activeConversation, setActiveConversation } = useUIKit('ChatContainer');
 
   const [accounts, setAccounts] = useState<IMAccount[]>();
-  const [activeContact, setActiveContact] = useState<Contact>();
+  const [activeContact, setActiveContact] = useState<Contact | undefined>(undefined);
 
-  const handleSelectContact = (contact: Contact) => {
+  const handleSelectContact = (contact?: Contact) => {
     setActiveContact(contact);
     setActiveConversation(undefined);
   };
@@ -103,7 +103,7 @@ export const ChatContainer: React.FC<ChatContainerProps> = ({
     }
   }, [client]);
 
-  const handleChangeAccount = (account: IMAccount) => {
+  const handleChangeAccount = (account?: IMAccount) => {
     setActiveAccount(account);
   }
   
@@ -149,7 +149,7 @@ export const ChatContainer: React.FC<ChatContainerProps> = ({
         </Box>
         <Flex direction="column" flex={1} justifyContent="end">
           <VStack spacing='12px'>
-            <IconButton icon={<MarketIcon />} />
+            <IconButton aria-label="应用市场" icon={<MarketIcon />} />
             <ColorModeSwitcher />
             <SettingsPopover />
           </VStack>
@@ -184,10 +184,10 @@ export const ChatContainer: React.FC<ChatContainerProps> = ({
             <UIChat>
               <UIChatHeader
                 pluginComponentList={[
-                  <div key="moment" className="input-plugin-item" onClick={() => setActiveMomentProfile(activeConversation?.contact)}>
+                  () => <div key="moment" className="input-plugin-item" onClick={() => setActiveMomentProfile(activeConversation?.contact)}>
                     <MomentIcon />
                   </div>,
-                  <div key="sider" className="input-plugin-item" onClick={() => setShowSider(!showSider)}>
+                  () => <div key="sider" className="input-plugin-item" onClick={() => setShowSider(!showSider)}>
                     <SideBarShowIcon />
                   </div>,
                 ]}

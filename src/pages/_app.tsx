@@ -7,7 +7,7 @@ import { customTheme } from '@/lib/theme'
 export default function App({ Component, pageProps }: AppProps): React.ReactElement<AppProps> {
   const { user } = pageProps;
 
-  const Layout = Component['layout'] ? Component['layout'] : ({ children }) => <>{children}</>;
+  const Layout = (Component as any)['layout'] ? (Component as any)['layout'] : ({ children }: { children: React.ReactNode }) => <>{children}</>;
 
   const { ToastContainer } = createStandaloneToast(customTheme);
 

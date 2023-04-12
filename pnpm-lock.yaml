@@ -35,8 +35,8 @@ dependencies:
     specifier: 18.0.11
     version: 18.0.11
   '@uimkit/uikit-react':
-    specifier: ^1.0.0
-    version: 1.0.0(@types/react@18.0.28)(date-fns@2.29.3)(react-dom@18.2.0)(react@18.2.0)(tslib@2.5.0)
+    specifier: ^1.0.2
+    version: 1.0.2(@types/react@18.0.28)(date-fns@2.29.3)(react-dom@18.2.0)(react@18.2.0)(tslib@2.5.0)
   '@uimkit/uim-js':
     specifier: ^0.0.31
     version: 0.0.31
@@ -1918,8 +1918,8 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: false
 
-  /@uimkit/uikit-react@1.0.0(@types/react@18.0.28)(date-fns@2.29.3)(react-dom@18.2.0)(react@18.2.0)(tslib@2.5.0):
-    resolution: {integrity: sha512-mius/SVscbwcg6QFFsGA6nEbD2OO04Ba/uipqOR2YtuNss8Ld33Mm4kKjKbRn50iPdl/wDKV9iCMZglcM0TPYQ==}
+  /@uimkit/uikit-react@1.0.2(@types/react@18.0.28)(date-fns@2.29.3)(react-dom@18.2.0)(react@18.2.0)(tslib@2.5.0):
+    resolution: {integrity: sha512-4Fo4qYbvEGaSpVrzaIPUCoGgUd6Wiy8fSasUMt0qM9OBKXy7e/pX+yyl9u/VsEY7EKFQroPCWnwQMw1dyADZHQ==}
     peerDependencies:
       date-fns: ^2.29.3
       react: '>=16.9.0'

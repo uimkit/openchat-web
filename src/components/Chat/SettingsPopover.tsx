@@ -16,7 +16,7 @@ export const SettingsPopover: React.FC<SettingsPopoverProps> = ({
   return (
     <Menu>
       <MenuButton>
-        <IconButton icon={<SettingsIcon/>}/>
+        <IconButton aria-label="设置" icon={<SettingsIcon/>}/>
       </MenuButton>
       <MenuList>
         <Link href="/api/auth/logout">

@@ -23,8 +23,8 @@ import UIMClient from '@uimkit/uim-js';
 
 
 type CreateAccountModalProps = {
-  isOpen?: boolean;
-  onClose?: () => void;
+  isOpen: boolean | false;
+  onClose: () => void;
 }
 
 export const CreateAccountModal: React.FC<CreateAccountModalProps> = ({
@@ -114,7 +114,7 @@ export const CreateAccountModal: React.FC<CreateAccountModalProps> = ({
   const toast = useToast()
 
   const handleAddAccount = (provider: Provider) => {
-    const c = (client as UIMClient);
+    const c = (client as unknown as UIMClient);
     c.authorize(provider.identifier, (id) => {
       toast({
         title: '账号添加成功.',

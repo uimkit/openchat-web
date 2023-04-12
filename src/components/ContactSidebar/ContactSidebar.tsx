@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import {
   Contact,
-} from '@chakra-ui/react';
+} from '@uimkit/uikit-react';
 
 export type ContactSidebarProps = {
   contact: Contact;

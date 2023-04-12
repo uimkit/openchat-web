@@ -1,7 +1,9 @@
-// import { useUser } from '@authok/nextjs-authok/client';
 import { Container } from '@chakra-ui/react';
 
-export function Layout({ children }) {
+type Props = {
+  children: React.ReactNode
+}
+export function Layout({ children }: Props) {
   return (
     <Container
       m={0}

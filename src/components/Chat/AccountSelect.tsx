@@ -6,7 +6,7 @@ import { ChevronDownIcon } from '@chakra-ui/icons';
 export type AccountSelectProps = {
   activeAccount?: IMAccount;
   accounts?: IMAccount[];
-  onSelect?: (account: IMAccount) => void;
+  onSelect?: (account?: IMAccount) => void;
 }
 
 export const AccountSelect: React.FC<AccountSelectProps> = ({ 

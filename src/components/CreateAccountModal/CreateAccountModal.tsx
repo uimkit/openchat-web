@@ -22,6 +22,7 @@ import UIMClient from '@uimkit/uim-js';
 
 type CreateAccountProvider = Provider & {
   strategy?: string
+  icon?: string
 }
 
 type CreateAccountModalProps = {
@@ -35,7 +36,7 @@ export const CreateAccountModal: React.FC<CreateAccountModalProps> = ({
 }) => {
   const { client } = useUIKit('CreateAccountModal');
 
-  const providers = useMemo(() => [
+  const providers = useMemo<CreateAccountProvider[]>(() => [
     {
       icon: 'https://scrm-uploads-1252461817.cos.ap-guangzhou.myqcloud.com/authok/assets/wechat.svg',
       name: '微信（线路一）',
@@ -122,7 +123,7 @@ export const CreateAccountModal: React.FC<CreateAccountModalProps> = ({
 
   const toast = useToast()
 
-  const handleAddAccount = (provider) => {
+  const handleAddAccount = (provider: CreateAccountProvider) => {
     const c = (client as unknown as UIMClient);
     c.authorize(provider.identifier, provider.strategy, (id) => {
       toast({

@@ -20,7 +20,9 @@ import {
 import { useMemo } from 'react';
 import UIMClient from '@uimkit/uim-js';
 
-
+type CreateAccountProvider = Provider & {
+  strategy?: string
+}
 
 type CreateAccountModalProps = {
   isOpen: boolean | false;
@@ -36,8 +38,15 @@ export const CreateAccountModal: React.FC<CreateAccountModalProps> = ({
   const providers = useMemo(() => [
     {
       icon: 'https://scrm-uploads-1252461817.cos.ap-guangzhou.myqcloud.com/authok/assets/wechat.svg',
-      name: '微信',
+      name: '微信（线路一）',
       identifier: 'wechat',
+      strategy: 'cs',
+    },
+    {
+      icon: 'https://scrm-uploads-1252461817.cos.ap-guangzhou.myqcloud.com/authok/assets/wechat.svg',
+      name: '微信（线路二）',
+      identifier: 'wechat',
+      strategy: 'cs2',
     },
     {
       icon: 'https://scrm-uploads-1252461817.cos.ap-guangzhou.myqcloud.com/authok/assets/wework.svg',
@@ -47,7 +56,7 @@ export const CreateAccountModal: React.FC<CreateAccountModalProps> = ({
     {
       name: '小程序客服',
       icon: 'https://scrm-uploads-1252461817.cos.ap-guangzhou.myqcloud.com/authok/assets/wechat.svg',
-      identifier: 'mini_kefu'  
+      identifier: 'mini_kefu',
     },
     {
       icon: 'https://scrm-uploads-1252461817.cos.ap-guangzhou.myqcloud.com/authok/assets/wechat.svg',
@@ -97,25 +106,25 @@ export const CreateAccountModal: React.FC<CreateAccountModalProps> = ({
     {
       icon: '',
       name: 'Line',
-      identifier: 'line',  
+      identifier: 'line',
     },
     {
       icon: '',
       name: 'Kakao',
-      identifier: 'kakao',  
+      identifier: 'kakao',
     },
     {
       icon: '',
       name: 'Zalo',
-      identifier: 'zalo',  
+      identifier: 'zalo',
     }
   ], []);
 
   const toast = useToast()
 
-  const handleAddAccount = (provider: Provider) => {
+  const handleAddAccount = (provider) => {
     const c = (client as unknown as UIMClient);
-    c.authorize(provider.identifier, (id) => {
+    c.authorize(provider.identifier, provider.strategy, (id) => {
       toast({
         title: '账号添加成功.',
         description: "账号添加成功.",
@@ -134,10 +143,10 @@ export const CreateAccountModal: React.FC<CreateAccountModalProps> = ({
         <ModalCloseButton />
         <ModalBody as={Wrap} spacing={4}>
           {providers.map(provider => (
-            <WrapItem 
-              key={provider.identifier} 
-              as={Button} 
-              alignItems="center" 
+            <WrapItem
+              key={`${provider.identifier}-${provider.strategy}`}
+              as={Button}
+              alignItems="center"
               variant="outline"
               style={{ width: '180px', height: '180px' }}
               whiteSpace={'normal'}
